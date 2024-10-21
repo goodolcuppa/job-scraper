@@ -1,0 +1,136 @@
+{% extends 'base.html' %} {% block title %}Home{% endblock %} {% block hero %}
+<section class="hero is-medium is-primary">
+	<div class="hero-body container">
+		<p class="title">Find your ideal job</p>
+		<p class="subtitle">Search across many sites all at once</p>
+		<form method="POST">
+			<div class="columns">
+				<input
+					class="input is-primary mx-1"
+					type="text"
+					name="jobRole"
+					placeholder="Job Role (e.g. Software Engineer )"
+				/>
+				<input
+					class="input is-primary mx-1"
+					type="text"
+					name="jobLocation"
+					placeholder="Job Location (e.g. United Kingdom)"
+				/>
+				<button type="submit" class="button is-primary is-light mx-1">
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						width="16"
+						height="16"
+						fill="currentColor"
+						class="bi bi-search mr-2"
+						viewBox="0 0 16 16"
+					>
+						<path
+							d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"
+						/>
+					</svg>
+					Search
+				</button>
+			</div>
+		</form>
+	</div>
+</section>
+{% endblock %} {% block content %}
+<p class="title is-4">Sites Searched</p>
+<div class="fixed-grid has-3-cols">
+	<div class="grid">
+		<div class="card cell">
+			<div class="card-content">
+				<div class="media">
+					<div class="media-left">
+						<figure class="image is-48x48">
+							<img
+								class="is-rounded"
+								src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fyt3.ggpht.com%2F-c-PT8gXPY_s%2FAAAAAAAAAAI%2FAAAAAAAAAAA%2FICZ9jSvcuOk%2Fs900-c-k-no-mo-rj-c0xffffff%2Fphoto.jpg&f=1&nofb=1&ipt=f53cc4978375cce71c95ce13497da5e2b8064121c74d05311ce1bf2ae0b512c6&ipo=images"
+								alt="Placeholder image"
+							/>
+						</figure>
+					</div>
+					<div class="media-content">
+						<p class="title is-4">Glassdoor</p>
+						<p class="subtitle is-6">www.glassdoor.co.uk</p>
+					</div>
+				</div>
+
+				<div class="content">12+ million listings</div>
+			</div>
+		</div>
+		<div class="card cell">
+			<div class="card-content">
+				<div class="media">
+					<div class="media-left">
+						<figure class="image is-48x48">
+							<img
+								class="is-rounded"
+								src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Flookaside.fbsbx.com%2Flookaside%2Fcrawler%2Fmedia%2F%3Fmedia_id%3D100066717848323&f=1&nofb=1&ipt=343230d80cdb24571c0f60cf8541838968d33f612d1d7fb5c2f79aec68fcb6ed&ipo=images"
+								alt="Placeholder image"
+							/>
+						</figure>
+					</div>
+					<div class="media-content">
+						<p class="title is-4">Indeed</p>
+						<p class="subtitle is-6">uk.indeed.com</p>
+					</div>
+				</div>
+
+				<div class="content">25+ million listings</div>
+			</div>
+		</div>
+		<div class="card cell">
+			<div class="card-content">
+				<div class="media">
+					<div class="media-left">
+						<figure class="image is-48x48">
+							<img
+								class="is-rounded"
+								src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Flh3.googleusercontent.com%2Fde9ap7dxgN6Ss0zMlWIGq6shAqzBpvao3iBuSXjhEXitgvYuzQ6qSZwZ8yYolKWfTYuB%3Dw300&f=1&nofb=1&ipt=fbb17b5d7ca74d792d1f7946c6f6b1ca45e16ba2a97bcee56101a2e69d6d04ea&ipo=images"
+								alt="Placeholder image"
+							/>
+						</figure>
+					</div>
+					<div class="media-content">
+						<p class="title is-4">Reed</p>
+						<p class="subtitle is-6">www.reed.co.uk</p>
+					</div>
+				</div>
+
+				<div class="content"></div>
+			</div>
+		</div>
+		<div class="cell"></div>
+	</div>
+</div>
+<p class="title is-4">Coming Soon</p>
+<div class="fixed-grid has-3-cols">
+	<div class="grid">
+		<div class="card cell">
+			<div class="card-content">
+				<div class="media">
+					<div class="media-left">
+						<figure class="image is-48x48">
+							<img
+								class="is-rounded"
+								src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fpbs.twimg.com%2Fprofile_images%2F876850559361454080%2FNDWrBCkP_400x400.jpg&f=1&nofb=1&ipt=fa7e60b900f357241cf29a50bb7289630ddfb8bd303a6fbbac26c5a9ca8c6459&ipo=images"
+								alt="Placeholder image"
+							/>
+						</figure>
+					</div>
+					<div class="media-content">
+						<p class="title is-4">Monster</p>
+						<p class="subtitle is-6">www.monster.co.uk</p>
+					</div>
+				</div>
+
+				<div class="content"></div>
+			</div>
+		</div>
+		<div class="cell"></div>
+	</div>
+</div>
+{% endblock %}

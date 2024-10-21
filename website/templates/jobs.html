@@ -1,0 +1,205 @@
+{% extends 'base.html' %} {% block title %}Search Results{% endblock %} {% block
+hero %}
+<div class="container mt-2">
+	<form method="POST" class="column is-8 is-offset-2">
+		<div class="columns">
+			<input
+				class="input is-primary mx-1"
+				type="text"
+				name="jobRole"
+				{%
+				if
+				job_role
+				!="jobs"
+				%}value="{{ job_role }}"
+				{%
+				endif
+				%}
+				placeholder="Job Role (e.g. Software Engineer)"
+			/>
+			<input
+				class="input is-primary mx-1"
+				type="text"
+				name="jobLocation"
+				{%
+				if
+				job_location
+				%}value="{{ job_location }}"
+				{%
+				endif
+				%}
+				placeholder="Job Location (e.g. United Kingdom)"
+			/>
+			<button type="submit" class="button is-primary mx-1">
+				<svg
+					xmlns="http://www.w3.org/2000/svg"
+					width="16"
+					height="16"
+					fill="currentColor"
+					class="bi bi-search mr-2"
+					viewBox="0 0 16 16"
+				>
+					<path
+						d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"
+					/>
+				</svg>
+				Search
+			</button>
+		</div>
+	</form>
+</div>
+{% endblock %}{% block content %}
+<div class="column is-6 is-offset-3">
+	<nav class="level">
+		<div class="level-item has-text-centered">
+			<div>
+				<p class="heading">Mean Salary</p>
+				<p class="title">£{{ mean_salary }}*</p>
+			</div>
+		</div>
+		<div class="level-item has-text-centered">
+			<div>
+				<p class="heading">Companies</p>
+				<p class="title">{{ unique_companies }}</p>
+			</div>
+		</div>
+		<div class="level-item has-text-centered">
+			<div>
+				<p class="heading">Unique Roles</p>
+				<p class="title">{{ unique_roles }}</p>
+			</div>
+		</div>
+	</nav>
+	<div class="is-flex is-justify-content-space-between mb-5 mt-6">
+		<p class="title is-4">
+			Showing {{ jobs|length }} results for {{ job_role }} {% if
+			job_location %}in {{ job_location }}{% endif %}
+		</p>
+	</div>
+	<div class="mb-6">
+		{% for job in jobs %}
+		<div class="card">
+			<div class="card-content">
+				<div class="is-flex is-justify-content-space-between mb-1">
+					<div>
+						<div class="job-title">
+							<strong id="fake-subject-1"
+								>{{ job['title'] }}</strong
+							>
+						</div>
+						<div class="job-origin is-flex">
+							<span class="mr-2"
+								><small class="is-flex is-align-items-center"
+									><svg
+										xmlns="http://www.w3.org/2000/svg"
+										width="16"
+										height="16"
+										fill="currentColor"
+										class="bi bi-building-fill mr-1"
+										viewBox="0 0 16 16"
+									>
+										<path
+											d="M3 0a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h3v-3.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 .5.5V16h3a1 1 0 0 0 1-1V1a1 1 0 0 0-1-1zm1 2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm3.5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5M4 5.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zM7.5 5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5m2.5.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zM4.5 8h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5m2.5.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm3.5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5"
+										/></svg
+									>{{ job['company'] }}</small
+								></span
+							>
+							<span class="job-location"
+								><small class="is-flex is-align-items-center"
+									><svg
+										xmlns="http://www.w3.org/2000/svg"
+										width="16"
+										height="16"
+										fill="currentColor"
+										class="bi bi-geo-alt-fill mr-1"
+										viewBox="0 0 16 16"
+									>
+										<path
+											d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6"
+										/></svg
+									>{{ job['location'] }}</small
+								></span
+							>
+						</div>
+					</div>
+					<div>
+						{% if user and user.is_authenticated %}
+						<button
+							class="button is-info is-outlined p-3"
+							onclick="saveJob(this, {{ job }})"
+						>
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								width="16"
+								height="16"
+								fill="currentColor"
+								class="bi bi-bookmark-fill"
+								viewBox="0 0 16 16"
+								style="width: 16px; height: 16px"
+							>
+								<path
+									d="M2 2v13.5a.5.5 0 0 0 .74.439L8 13.069l5.26 2.87A.5.5 0 0 0 14 15.5V2a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2"
+								/>
+							</svg></button
+						>{% endif %}
+					</div>
+				</div>
+				<div class="is-flex is-justify-content-space-between">
+					<div>
+						<div class="job-salary is-flex is-align-items-center">
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								width="16"
+								height="16"
+								fill="currentColor"
+								class="bi bi-cash-stack mr-1"
+								viewBox="0 0 16 16"
+							>
+								<path
+									d="M1 3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1zm7 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4"
+								/>
+								<path
+									d="M0 5a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1zm3 0a2 2 0 0 1-2 2v4a2 2 0 0 1 2 2h10a2 2 0 0 1 2-2V7a2 2 0 0 1-2-2z"
+								/>
+							</svg>
+							{{ job['salary']}}
+						</div>
+						<div>
+							<small
+								>{% if
+								job.url.startswith('https://www.reed.co.uk')
+								%}via Reed.co.uk{% elif
+								job.url.startswith('https://uk.indeed.com')
+								%}via Indeed.com{% elif
+								job.url.startswith('https://www.glassdoor.co.uk')
+								%}via Glassdoor.com {% endif %}</small
+							>
+						</div>
+					</div>
+					<a
+						class="button is-primary is-light mt-2"
+						href="{{ job['url'] }}"
+						>Apply<svg
+							xmlns="http://www.w3.org/2000/svg"
+							width="16"
+							height="16"
+							fill="currentColor"
+							class="bi bi-box-arrow-up-right ml-2"
+							viewBox="0 0 16 16"
+						>
+							<path
+								fill-rule="evenodd"
+								d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5"
+							/>
+							<path
+								fill-rule="evenodd"
+								d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0z"
+							/></svg
+					></a>
+				</div>
+			</div>
+		</div>
+		{% endfor %}
+	</div>
+	{% endblock %}
+</div>

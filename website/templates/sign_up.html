@@ -1,0 +1,100 @@
+{% extends 'base.html' %} {% block title %}Sign Up{% endblock %} {% block hero
+%} {% endblock %} {% block content %}
+<div class="card column is-4 is-offset-4">
+	<div class="card-content">
+		<div class="content">
+			<form method="POST">
+				<p class="is-size-4">Sign Up</p>
+				<div class="field">
+					<p class="control has-icons-left has-icons-right">
+						<input
+							id="username"
+							name="username"
+							class="input"
+							type="username"
+							placeholder="Username"
+							onkeyup="checkUsername(this)"
+						/>
+						<span class="icon is-small is-left">
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								width="16"
+								height="16"
+								fill="currentColor"
+								class="bi bi-person-fill"
+								viewBox="0 0 16 16"
+							>
+								<path
+									d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"
+								/>
+							</svg>
+						</span>
+						<span class="icon is-small is-right">
+							<i class="fas fa-check"></i>
+						</span>
+					</p>
+				</div>
+				<div class="field">
+					<p class="control has-icons-left">
+						<input
+							id="password"
+							name="password"
+							class="input"
+							type="password"
+							placeholder="Password"
+							onkeyup="checkPassword(this)"
+						/>
+						<span class="icon is-small is-left">
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								width="16"
+								height="16"
+								fill="currentColor"
+								class="bi bi-lock-fill"
+								viewBox="0 0 16 16"
+							>
+								<path
+									d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2m3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2"
+								/>
+							</svg>
+						</span>
+					</p>
+				</div>
+				<div class="field">
+					<p class="control has-icons-left">
+						<input
+							id="confirm-password"
+							name="confirmPassword"
+							class="input"
+							type="password"
+							placeholder="Confirm Password"
+							onkeyup="checkConfirmPassword(this)"
+						/>
+						<span class="icon is-small is-left">
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								width="16"
+								height="16"
+								fill="currentColor"
+								class="bi bi-lock-fill"
+								viewBox="0 0 16 16"
+							>
+								<path
+									d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2m3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2"
+								/>
+							</svg>
+						</span>
+					</p>
+				</div>
+				<div class="field">
+					<p class="control">
+						<button type="submit" class="button is-success">
+							Sign Up
+						</button>
+					</p>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+{% endblock %}

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html class="has-navbar-fixed-top">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, intial-scale=1" />
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css"
+		/>
+		<title>{% block title %}Hello World!{% endblock %}</title>
+	</head>
+	<body>
+		<nav
+			class="navbar is-fixed-top"
+			role="navigation"
+			aria-label="main navigation"
+		>
+			<div class="navbar-brand">
+				<a class="navbar-item" href="">
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						width="16"
+						height="16"
+						fill="currentColor"
+						class="bi bi-briefcase-fill"
+						viewBox="0 0 16 16"
+					>
+						<path
+							d="M6.5 1A1.5 1.5 0 0 0 5 2.5V3H1.5A1.5 1.5 0 0 0 0 4.5v1.384l7.614 2.03a1.5 1.5 0 0 0 .772 0L16 5.884V4.5A1.5 1.5 0 0 0 14.5 3H11v-.5A1.5 1.5 0 0 0 9.5 1zm0 1h3a.5.5 0 0 1 .5.5V3H6v-.5a.5.5 0 0 1 .5-.5"
+						/>
+						<path
+							d="M0 12.5A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5V6.85L8.129 8.947a.5.5 0 0 1-.258 0L0 6.85z"
+						/>
+					</svg>
+					<h1 class="has-text-weight-bold">Job Scraper</h1>
+				</a>
+
+				<a
+					role="button"
+					class="navbar-burger"
+					aria-label="menu"
+					aria-expanded="false"
+					data-target="navbarBasicExample"
+				>
+					<span aria-hidden="true"></span>
+					<span aria-hidden="true"></span>
+					<span aria-hidden="true"></span>
+					<span aria-hidden="true"></span>
+				</a>
+			</div>
+
+			<div id="navbar" class="navbar-menu">
+				<div class="navbar-start">
+					<a class="navbar-item" href="/">Home</a>
+
+					<a class="navbar-item" href="/about">About</a>
+
+					{% if user and user.is_authenticated %}
+					<a class="navbar-item" href="/saved">Saved</a>
+					{% endif %}
+				</div>
+
+				<div class="navbar-end">
+					<div class="navbar-item">
+						<div class="buttons">
+							{% if user and user.is_authenticated %}
+							<div class="is-flex mx-4">
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									width="16"
+									height="16"
+									fill="currentColor"
+									class="bi bi-person-circle mx-1"
+									viewBox="0 0 16 16"
+								>
+									<path
+										d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"
+									/>
+									<path
+										fill-rule="evenodd"
+										d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"
+									/>
+								</svg>
+								<p>{{ user.username }}</p>
+							</div>
+							<a class="button is-light" href="/logout">
+								Log out
+							</a>
+							{% else %}
+							<a class="button is-primary" href="/sign-up">
+								<strong>Sign up</strong>
+							</a>
+							<a class="button is-light" href="/login"> Log in </a
+							>{% endif %}
+						</div>
+					</div>
+				</div>
+			</div>
+		</nav>
+		{% block hero %}{% endblock %}
+
+		<div>
+			<div class="container my-6" style="min-height: 630px">
+				{% block content %}{% endblock %}
+			</div>
+		</div>
+
+		<footer class="footer">
+			<div class="content has-text-centered">
+				<p>
+					<strong>Job Scraper</strong> by
+					<a href="https://github.com/goodolcuppa">Ben Radford</a>.
+				</p>
+			</div>
+		</footer>
+
+		<script
+			type="text/javascript"
+			src="{{ url_for('static', filename='index.js' )}}"
+		></script>
+	</body>
+</htnl>
