@@ -97,15 +97,20 @@ def save_job():
     job = data['job']
     
     if job:
-        new_job = Job(
-            title=job['title'], 
-            company=job['company'], 
-            url=job['url'], 
-            location=job['location'], 
-            salary=job['salary']
-        )
-        db.session.add(new_job)
-        current_user.saved.append(new_job)
+        db_job = Job.query.filter_by(url=job['url']).first()
+        if db_job:
+            current_user.saved.append(db_job)
+        else:
+            new_job = Job(
+                title=job['title'], 
+                company=job['company'], 
+                url=job['url'], 
+                location=job['location'], 
+                salary=job['salary']
+            )
+            db.session.add(new_job)
+            current_user.saved.append(new_job)
+        
         db.session.commit()
         return jsonify({})
     
