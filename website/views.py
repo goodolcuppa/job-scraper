@@ -3,14 +3,7 @@ from flask_login import login_user, login_required, logout_user, current_user
 import pandas as pd
 import json
 
-from .scraping import reed_url
-from .scraping import parse_reed_salaries
-from .scraping import scrape_reed_jobs
-from .scraping import parse_indeed_salaries
-from .scraping import scrape_indeed_jobs
-from .scraping import parse_glassdoor_salaries
-from .scraping import scrape_glassdoor_jobs
-
+from .scraping import *
 from . import db
 from .models import user_job, Job
 
